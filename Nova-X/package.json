@@ -1,0 +1,15 @@
+{
+  "name": "nova-x",
+  "version": "1.0.0",
+  "description": "Nova-X MTA management Discord bot",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "mysql2": "^3.11.0",
+    "dotenv": "^16.4.5"
+  }
+}
