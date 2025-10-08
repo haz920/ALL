@@ -5,17 +5,19 @@ const { success, error } = require('../utils/embeds');
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('removecharacter')
-    .setDescription('remove Character .')
+    .setDescription('remove Character')
     .addIntegerOption(o => o.setName('id').setDescription('Character ID').setRequired(true))
-    .setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild),
+    .setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
   async execute(interaction) {
+    await interaction.deferReply({ ephemeral: true });
     const id = interaction.options.getInteger('id', true);
     try {
       const affected = await db.removeCharacter(id);
-      await interaction.reply({ embeds: [success(`Removed ${affected} character(s) with id ${id}.`)] });
+      if (affected > 0) return interaction.editReply({ embeds: [success(`Character ${id} removed.`)] });
+      return interaction.editReply({ embeds: [error('Character not found.')] });
     } catch (e) {
       console.error(e);
-      await interaction.reply({ embeds: [error('Failed to remove character.')], ephemeral: true });
+      return interaction.editReply({ embeds: [error('Failed to remove character')] });
     }
   }
 };
