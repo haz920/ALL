@@ -1,0 +1,12 @@
+{
+  "token": "PUT_DISCORD_BOT_TOKEN_HERE",
+  "clientId": "PUT_CLIENT_ID",
+  "guildId": "OPTIONAL_GUILD_ID_FOR_GUILD_COMMANDS",
+  "mysql": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "user": "root",
+    "password": "password",
+    "database": "novax"
+  }
+}
